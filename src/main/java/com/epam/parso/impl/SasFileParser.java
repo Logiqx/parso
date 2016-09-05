@@ -800,7 +800,22 @@ public final class SasFileParser {
      * @return a variable of the {@link Date} type.
      */
     private Date bytesToDate(byte[] bytes) {
-        double doubleDays = byteArrayToByteBuffer(bytes).getDouble();
+        double doubleDays;
+        if (bytes.length < 8) {
+            byte[] ba = new byte[8];
+            int i;
+            for (i = 0; i < bytes.length; i++) {
+                ba[i] = bytes[i];
+            }
+            for (i = bytes.length; i < 8; i++) {
+                ba[i] = 0;
+            }
+            ByteBuffer bb = byteArrayToByteBuffer(ba);
+            doubleDays = bb.getDouble();
+        } else {
+            doubleDays = byteArrayToByteBuffer(bytes).getDouble();
+        }
+
         return Double.isNaN(doubleDays) ? null : new Date((long) ((doubleDays
                 - SasFileConstants.START_DATES_DAYS_DIFFERENCE)
                 * SasFileConstants.SECONDS_IN_MINUTE * SasFileConstants.MINUTES_IN_HOUR
