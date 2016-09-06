@@ -781,7 +781,14 @@ interface SasFileConstants {
      * The date formats to store the day, month, and year. Appear in the data of the
      * {@link SasFileParser.FormatAndLabelSubheader} subheader and are stored in {@link Column#format}.
      */
-    List<String> DATE_FORMAT_STRINGS = Arrays.asList("YYMMDD", "MMDDYY", "DDMMYY", "DATE");
+    List<String> DATE_FORMAT_STRINGS = Arrays.asList("DATE",
+                                        "YYMMDD", "YYMMDDB", "YYMMDDC", "YYMMDDD", "YYMMDDN", "YYMMDDP", "YYMMDDS",
+                                        "MMDDYY", "MMDDYYB", "MMDDYYC", "MMDDYYD", "MMDDYYN", "MMDDYYP", "MMDDYYS",
+                                        "DDMMYY", "DDMMYYB", "DDMMYYC", "DDMMYYD", "DDMMYYN", "DDMMYYP", "DDMMYYS",
+                                        "MMYY", "MMYYC", "MMYYD", "MMYYN", "MMYYP", "MMYYS",
+                                        "YYMM", "YYMMC", "YYMMD", "YYMMN", "YYMMP", "YYMMS",
+                                        "MONYY",
+                                        "YYMON");
 
     /**
      * The date formats to store the day, month, year, hour, minutes, seconds, and milliseconds. Appear in the data
